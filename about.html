@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AMPERSAND</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+  <!-- Better Lexend setup -->
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    #page-fade {
+    position: fixed;
+    inset: 0;
+    background: var(--bg-light);
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 0.9s ease;
+    z-index: 9999;
+    }
+
+/* Dark mode support */
+    body.dark #page-fade {
+    background: var(--bg-dark);
+    }
+
+/* When page is fully visible */
+    body.loaded #page-fade {
+    opacity: 0;
+    }
+    :root {
+      --main-color: seagreen;
+
+      --bg-light: #ffffff;
+      --bg-dark: #1f1f1f;
+
+      --text-light: #1a1a1a;
+      --text-dark: #f5f5f5;
+
+      /* Header colors */
+      --header-light: #f4f7f5;
+      --header-dark: #111111;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Lexend', sans-serif;
+      font-weight: 400;
+      line-height: 1.7;
+      letter-spacing: 0.3px;
+      background-color: var(--bg-light);
+      color: var(--text-light);
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    header {
+      background-color: var(--header-light);
+      color: var(--text-light);
+      padding: 28px 20px;
+      text-align: center;
+      transition: background-color 0.3s, color 0.3s;
+      border-bottom: 2px solid rgba(0,0,0,0.06);
+    }
+
+    header h1 {
+      margin: 0;
+      font-weight: 600;
+      font-size: 2.3rem;
+      letter-spacing: 1px;
+    }
+
+    /* & stays green in both themes */
+    .ampersand {
+      color: var(--main-color);
+    }
+
+    header h2 {
+      margin-top: 8px;
+      font-weight: 300;
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    main {
+      padding: 50px 25px;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .section {
+      margin-bottom: 50px;
+    }
+
+    .section h3 {
+      font-weight: 500;
+      margin-bottom: 12px;
+      color: var(--main-color);
+      letter-spacing: 0.5px;
+    }
+
+    .section p {
+      font-weight: 300;
+      font-size: 1.05rem;
+      opacity: 0.9;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 10px;
+      background-color: var(--main-color);
+      color: white;
+      cursor: pointer;
+      font-family: 'Lexend', sans-serif;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+      opacity: 0.9;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      opacity: 0.6;
+    }
+
+    /* Dark mode */
+    body.dark {
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
+    }
+
+    body.dark header {
+      background-color: var(--header-dark);
+      color: var(--text-dark);
+      border-bottom: 2px solid rgba(255,255,255,0.08);
+    }
+
+    body.dark .section p {
+      opacity: 0.85;
+    }
+
+    /* NAVBAR */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 20px 20px 20px;
+  margin-bottom: 10px;
+}
+
+.logo {
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: inherit;
+  font-weight: 400;
+  opacity: 0.8;
+  transition: 0.2s;
+}
+
+.nav-links a:hover {
+  opacity: 1;
+  color: var(--main-color);
+}
+
+/* HERO AREA */
+
+.hero {
+  text-align: center;
+}
+  </style>
+</head>
+
+<body>
+  <header>
+
+  <nav class="navbar">
+    <div class="logo">
+      <span class="ampersand">&</span>AMPERSAND
+    </div>
+
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="contact.html">Contact</a>
+      <a href="team.html">Our Team</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <h1>
+      <span class="ampersand">ABOUT US</span>
+    </h1>
+  </div>
+
+</header>
+
+  <main>
+
+    <div class="section">
+      <h3>What is Ampersand?</h3>
+      <p>
+        Ampersand was designed with one goal - make technology that works. Originally BAG Studios, we strive to make good products for daily use. Whether it's work, study, or gaming, we provide you with some of the best hardware and software out there.
+      </p>
+      <button onclick="toggleTheme()">Toggle Theme</button>
+    </div>
+
+  </main>
+
+  <footer>
+    © 2026 Ampersand Technologies
+  </footer>
+
+  <script>
+    window.addEventListener("load", () => {
+    document.body.classList.add("loaded");
+    });
+    document.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", function (e) {
+        const href = this.getAttribute("href");
+
+    // ignore external links or anchors
+        if (!href || href.startsWith("#") || href.startsWith("mailto")) return;
+
+        e.preventDefault();
+
+        document.body.classList.remove("loaded");
+
+        setTimeout(() => {
+        window.location.href = href;
+        }, 900); // match transition time
+    });
+    });
+    function applyTheme(theme) {
+        if (theme === "dark") {
+            document.body.classList.add("dark");
+        } else {
+            document.body.classList.remove("dark");
+        }
+    }
+
+// Load saved theme on page load
+    const savedTheme = localStorage.getItem("theme");
+    applyTheme(savedTheme);
+
+// Toggle function
+    function toggleTheme() {
+        const isDark = document.body.classList.toggle("dark");
+
+        localStorage.setItem("theme", isDark ? "dark" : "light");
+    }
+  </script>
+<div id="page-fade"></div>
+</body>
+</html>

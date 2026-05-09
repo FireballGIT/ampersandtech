@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+  <title>AMPERSAND — Contact</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --main-color: seagreen;
+
+      --bg-light: #ffffff;
+      --bg-dark: #1f1f1f;
+
+      --surface-light: #f4f7f5;
+      --surface-dark: #111111;
+
+      --card-light: #fafafa;
+      --card-dark: #2a2a2a;
+
+      --text-light: #1a1a1a;
+      --text-dark: #f5f5f5;
+
+      --border-light: rgba(0,0,0,0.08);
+      --border-dark: rgba(255,255,255,0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Lexend', sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-light);
+      line-height: 1.7;
+      letter-spacing: 0.3px;
+      transition: 0.3s;
+    }
+
+    /* HEADER */
+
+    header {
+      background-color: var(--surface-light);
+      border-bottom: 1px solid var(--border-light);
+      padding: 28px 20px 40px;
+      transition: 0.3s;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1100px;
+      margin: auto;
+      margin-bottom: 40px;
+    }
+
+    .logo {
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    .ampersand {
+      color: var(--main-color);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: inherit;
+      opacity: 0.8;
+      transition: 0.2s;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--main-color);
+      opacity: 1;
+    }
+
+    /* HERO */
+
+    .hero {
+      text-align: center;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: 3rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .hero p {
+      margin-top: 12px;
+      font-size: 1.05rem;
+      opacity: 0.8;
+      font-weight: 300;
+    }
+
+    /* MAIN */
+
+    main {
+      max-width: 900px;
+      margin: auto;
+      padding: 60px 25px;
+    }
+
+    .contact-card {
+      background-color: var(--card-light);
+      border: 1px solid var(--border-light);
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .contact-card h2 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      color: var(--main-color);
+      font-size: 2rem;
+    }
+
+    .contact-card p {
+      opacity: 0.8;
+      font-weight: 300;
+      max-width: 600px;
+      margin: auto;
+      margin-bottom: 30px;
+    }
+
+    /* BUTTONS */
+
+    .button-group {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    button,
+    .btn-link {
+      border: none;
+      border-radius: 12px;
+      padding: 12px 22px;
+      background-color: var(--main-color);
+      color: white;
+      font-family: 'Lexend', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: 0.2s;
+      display: inline-block;
+    }
+
+    button:hover,
+    .btn-link:hover {
+      transform: translateY(-2px);
+      opacity: 0.9;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      opacity: 0.6;
+      font-size: 0.9rem;
+    }
+
+    /* DARK MODE */
+
+    body.dark {
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
+    }
+
+    body.dark header {
+      background-color: var(--surface-dark);
+      border-color: var(--border-dark);
+    }
+
+    body.dark .contact-card {
+      background-color: var(--card-dark);
+      border-color: var(--border-dark);
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 700px) {
+      .navbar {
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .hero h1 {
+        font-size: 2.3rem;
+      }
+
+      .contact-card {
+        padding: 28px;
+      }
+    }
+    #page-fade {
+    position: fixed;
+    inset: 0;
+    background: var(--bg-light);
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 0.9s ease;
+    z-index: 9999;
+    }
+
+/* Dark mode support */
+    body.dark #page-fade {
+    background: var(--bg-dark);
+    }
+
+/* When page is fully visible */
+    body.loaded #page-fade {
+    opacity: 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+
+    <nav class="navbar">
+      <div class="logo">
+        <span class="ampersand">&</span>AMPERSAND
+      </div>
+
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="team.html">Our Team</a>
+        <a href="products.html">Products</a>
+      </div>
+    </nav>
+
+    <div class="hero">
+      <h1>
+        <span class="ampersand">CONTACT</span>
+      </h1>
+
+      <p>
+        Questions, ideas, partnerships, or opportunities — we'd love to hear from you.
+      </p>
+    </div>
+
+  </header>
+
+  <main>
+
+    <div class="contact-card">
+
+      <h2>Get In Touch</h2>
+
+      <p>
+        AMPERSAND is always open to new ideas, collaborations, and conversations about technology and innovation.
+      </p>
+
+      <div class="button-group">
+
+        <a class="btn-link" href="mailto:gafutb@outlook.com">
+          Email Us
+        </a>
+
+        <button onclick="toggleTheme()">
+          Toggle Theme
+        </button>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer>
+    © 2026 Ampersand Technologies
+  </footer>
+
+  <script>
+    window.addEventListener("load", () => {
+    document.body.classList.add("loaded");
+    });
+    document.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", function (e) {
+        const href = this.getAttribute("href");
+
+    // ignore external links or anchors
+        if (!href || href.startsWith("#") || href.startsWith("mailto")) return;
+
+        e.preventDefault();
+
+        document.body.classList.remove("loaded");
+
+        setTimeout(() => {
+        window.location.href = href;
+        }, 900); // match transition time
+    });
+    });
+    function applyTheme(theme) {
+        if (theme === "dark") {
+            document.body.classList.add("dark");
+        } else {
+            document.body.classList.remove("dark");
+        }
+    }
+
+// Load saved theme on page load
+    const savedTheme = localStorage.getItem("theme");
+    applyTheme(savedTheme);
+
+// Toggle function
+    function toggleTheme() {
+        const isDark = document.body.classList.toggle("dark");
+
+        localStorage.setItem("theme", isDark ? "dark" : "light");
+    }
+  </script>
+<div id="page-fade"></div>
+</body>
+</html>
