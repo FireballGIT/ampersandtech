@@ -6,7 +6,7 @@
     <title>AMPERSAND - Staff Portal</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Better Lexend setup -->
-    <link href="https://googleapis.com" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         #page-fade { position: fixed; inset: 0; background: var(--bg-light); pointer-events: none; opacity: 1; transition: opacity 0.9s ease; z-index: 9999; }
         /* Dark mode support */
@@ -183,7 +183,7 @@
             </div>
         </nav>
         <div class="hero">
-            <h1><span class="ampersand">STAFF</span> PORTAL</h1>
+            <h1>STAFF PORTAL</h1>
         </div>
     </header>
 
@@ -192,12 +192,12 @@
             <h3 style="font-weight: 500; margin-top: 0; margin-bottom: 15px; color: var(--main-color); letter-spacing: 0.5px;">Authorized Personnel Only</h3>
             <form action="/login" method="POST">
                 <div class="form-group">
-                    <label>Staff Handle / Nickname</label>
-                    <input type="text" name="username" placeholder="e.g. Teammate_01" required autocomplete="off">
+                    <p><b>Username</b></p>
+                    <input type="text" name="username" placeholder="" required autocomplete="off">
                 </div>
                 <div class="form-group">
-                    <label>Security Clearance Code</label>
-                    <input type="password" name="password" placeholder="••••••••" required>
+                    <p><b>Password</b></p>
+                    <input type="password" name="password" placeholder="" required>
                 </div>
                 <button type="submit">Verify &amp; Connect</button>
             </form>
