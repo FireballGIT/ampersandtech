@@ -218,7 +218,6 @@
     </footer>
 
     <script>
-        // --- 1. THE SECURITY SHIELD INTERCEPTOR ---
         const activeUser = sessionStorage.getItem("ampersand_session");
         
         // Check if they skipped login OR tried hacking an unlisted handle name
@@ -230,60 +229,6 @@
             // Crash execution flow completely
             throw new Error("Security Intercept: Unauthorized Token State.");
         }
-
-        // --- 2. GLOBAL CHAT ENGINE ---
-        // Sets up a free public message channel named after your company
-        const chatChannel = new BroadcastChannel('ampersand_hq_relay');
-
-        // Automatically trigger the join alert update!
-        setTimeout(() => {
-            chatChannel.postMessage({ type: 'system', text: `${activeUser} has joined the chat.` });
-            pushToBox('system', `${activeUser} has joined the chat.`);
-        }, 400);
-
-        // Listen for live messages bouncing from your friends' devices
-        chatChannel.onmessage = (event) => {
-            pushToBox(event.data.type, event.data.text, event.data.user);
-        };
-
-        function sendMessage() {
-            const input = document.getElementById('msg-input');
-            if (input.value.trim() !== "") {
-                const txt = input.value;
-                chatChannel.postMessage({ type: 'user', user: activeUser, text: txt });
-                pushToBox('user', txt, activeUser);
-                input.value = "";
-            }
-        }
-
-        function pushToBox(type, text, user = "") {
-            const box = document.getElementById('chat-box');
-            const msg = document.createElement('div');
-            if (type === 'system') {
-                msg.className = 'system-msg';
-                msg.innerText = text;
-            } else {
-                msg.className = 'user-msg';
-                msg.innerHTML = `<span class="user-name">${user}:</span> ${text}`;
-            }
-            box.appendChild(msg);
-            box.scrollTop = box.scrollHeight; // Keep view focused on newest updates
-        }
-
-        function handleLogout() {
-            sessionStorage.removeItem("ampersand_session");
-            localStorage.removeItem("ampersand_remember");
-            document.body.classList.remove("loaded");
-            setTimeout(() => { window.location.href = 'login.html'; }, 900);
-        }
-
-        document.getElementById('msg-input').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') sendMessage();
-        });
-
-        window.addEventListener("load", () => {
-            document.body.classList.add("loaded");
-        });
 
         // Theme management hooks
         const savedTheme = localStorage.getItem("theme");
